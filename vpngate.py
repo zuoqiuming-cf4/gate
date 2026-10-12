@@ -85,7 +85,7 @@ EDGE_HOSTS = [
     h.strip()
     for h in os.environ.get(
         "EDGE_HOSTS",
-        "cf.877774.xyz:443,cf.itv888.cn:443,www.blibli.com:443,cdn.204910.best:443,ahrefs.com:443,www.sofi.com:443,spring.io:443,baota.us.kg:443,www.mc.js.cool:443,wppaunz.com:443,p.etime.vip:443,hzytjy.cn:443,cf.3666888.xyz:443,api.gzcrtw.com:443,bbs.alipansou.com:443,linear.app:443,dnew.cc:443,www.bis.gov:443,serviceshub.samsclub.com:443,securecircle.com:443,cloudflare.idc.rocks:443,openai.com:443,www.wto.org:443,www.deepl.com:443,cdn.2x.nz:443,www.zendesk.com:443,www.bangbenjiaju.com:443,www.dg22.top:443,cdn.ddeed.de:443,coreweave.com:443,www.mastervolt.com:443,cf.1o.ee:443",
+        "213.14.32.139:443,cf.877774.xyz:443,cf.itv888.cn:443,www.blibli.com:443,cdn.204910.best:443,ahrefs.com:443,www.sofi.com:443,spring.io:443,baota.us.kg:443,www.mc.js.cool:443,wppaunz.com:443,p.etime.vip:443,hzytjy.cn:443,cf.3666888.xyz:443,api.gzcrtw.com:443,bbs.alipansou.com:443,linear.app:443,dnew.cc:443,www.bis.gov:443,serviceshub.samsclub.com:443,securecircle.com:443,cloudflare.idc.rocks:443,openai.com:443,www.wto.org:443,www.deepl.com:443,cdn.2x.nz:443,www.zendesk.com:443,www.bangbenjiaju.com:443,www.dg22.top:443,cdn.ddeed.de:443,coreweave.com:443,www.mastervolt.com:443,cf.1o.ee:443",
     ).split(",")
     if h.strip()
 ]
