@@ -92,7 +92,8 @@ EDGE_HOSTS = [
 
 # 优选 API 地址配置 (支持逗号分隔多个，可配置在 GitHub Action Secret / Env 中)
 OPTIMAL_API = os.environ.get("OPTIMAL_API", "https://cf.090227.xyz/ct?ips=6&port=443")
-
+# 固定最终出口 IPv4；留空表示不筛选
+TARGET_EXIT_IP = os.environ.get("TARGET_EXIT_IP", "").strip()
 NODES_URL = os.environ.get("NODES_URL", "https://zuoqiuming-cf4.github.io/gate/nodes.txt")
 
 # ---------------------------------------------------------------------------
@@ -488,8 +489,31 @@ def main():
 
     log("CLOUDFLARE WORKER", f"提交检测: {len(uniq)} (并发 {CONCURRENCY}, 单请求超时 {CHECK_TIMEOUT}s)")
     t0 = time.time()
+    
     results = check_all(uniq, session)
     elapsed = time.time() - t0
+    
+    # 只保留指定出口 IPv4 对应的可用 SSTP 节点
+    if TARGET_EXIT_IP:
+        matched = [
+            r for r in results
+            if r.get("success")
+            and (r.get("exit") or {}).get("ip") == TARGET_EXIT_IP
+        ]
+    
+        if not matched:
+            die(
+                f"没有找到出口 IP 为 {TARGET_EXIT_IP} 的可用节点；"
+                "本次不更新订阅文件，请检查目标 IP 是否仍在线"
+            )
+    
+        results = matched
+        log(
+            "EXIT FILTER",
+            f"固定出口 IPv4: {TARGET_EXIT_IP}，"
+            f"匹配到 {len(matched)} 个节点"
+        )
+
 
     success = [r for r in results if r.get("success")]
     failed = [r for r in results if not r.get("success")]
