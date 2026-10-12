@@ -490,15 +490,6 @@ def main():
     
     results = check_all(uniq, session)
     elapsed = time.time() - t0
-    
-        results = matched
-        log(
-            "EXIT FILTER",
-            f"固定出口 IPv4: {TARGET_EXIT_IP}，"
-            f"匹配到 {len(matched)} 个节点"
-        )
-
-
     success = [r for r in results if r.get("success")]
     failed = [r for r in results if not r.get("success")]
     worker_errors = [r for r in failed if r.get("worker_error")]
