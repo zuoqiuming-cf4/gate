@@ -41,7 +41,7 @@ VPNGATE_MIRROR = os.environ.get(
     "VPNGATE_MIRROR",
     "https://raw.githubusercontent.com/fdciabdul/Vpngate-Scraper-API/main/json/data.json",
 )
-WORKER_CHECK_URL = os.environ.get("CHECK_WORKER", "https://你的域名/check?sstp=vpn:vpn@")
+WORKER_CHECK_URL = os.environ.get("CHECK_WORKER", "https://jia.cf4.dpdns.org/check?sstp=vpn:vpn@")
 CONCURRENCY = max(1, int(os.environ.get("CHECK_CONCURRENCY", "32")))
 CHECK_TIMEOUT = float(os.environ.get("CHECK_TIMEOUT", "90"))
 MAX_CHECK_NODES = int(os.environ.get("MAX_CHECK_NODES", "0"))
@@ -85,7 +85,7 @@ EDGE_HOSTS = [
     h.strip()
     for h in os.environ.get(
         "EDGE_HOSTS",
-        "",
+        "cf.877774.xyz:443,cf.itv888.cn:443,www.blibli.com:443,cdn.204910.best:443,ahrefs.com:443,www.sofi.com:443,spring.io:443,baota.us.kg:443,www.mc.js.cool:443,wppaunz.com:443,p.etime.vip:443,hzytjy.cn:443,cf.3666888.xyz:443,api.gzcrtw.com:443,bbs.alipansou.com:443,linear.app:443,dnew.cc:443,www.bis.gov:443,serviceshub.samsclub.com:443,securecircle.com:443,cloudflare.idc.rocks:443,openai.com:443,www.wto.org:443,www.deepl.com:443,cdn.2x.nz:443,www.zendesk.com:443,www.bangbenjiaju.com:443,www.dg22.top:443,cdn.ddeed.de:443,coreweave.com:443,www.mastervolt.com:443,cf.1o.ee:443",
     ).split(",")
     if h.strip()
 ]
